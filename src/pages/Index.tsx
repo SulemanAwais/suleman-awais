@@ -276,7 +276,7 @@ export default function Portfolio() {
                   <div className="w-full bg-white bg-opacity-30 rounded-full h-2">
                     <motion.div
                       className="rounded-full h-2"
-                      style={{ backgroundColor: skill.primaryColor }}
+                      style={{ backgroundColor: 'white' }}
                       initial={{ width: 0 }}
                       whileInView={{ width: `${skill.level * 10}%` }}
                       transition={{ duration: 1, delay: index * 0.1 }}
