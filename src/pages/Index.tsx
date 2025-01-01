@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa'
 import SkillsSection from '../components/SkillsSection'
 import ProjectsSection from '../components/ProjectsSection'
+import ContactSection from '../components/ContactSection'
 
 const sections = ['Home', 'About', 'Skills', 'Projects', 'Contact']
 
@@ -12,6 +13,7 @@ export default function Portfolio() {
   const [activeSection, setActiveSection] = useState('Home')
   const [isNavOpen, setIsNavOpen] = useState(false)
   const [isHeaderVisible, setIsHeaderVisible] = useState(true)
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,30 +24,48 @@ export default function Portfolio() {
       setIsHeaderVisible(scrollPosition < 100)
     }
 
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY })
+    }
+
     window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+    window.addEventListener('mousemove', handleMouseMove)
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('mousemove', handleMouseMove)
+    }
   }, [])
 
   return (
     <div className="min-h-screen text-white">
-      <div className="fixed inset-0 bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-800 z-[-1]" />
-      <motion.div
-        className="fixed inset-0 z-[-1] opacity-50"
-        animate={{
-          background: [
-            'radial-gradient(circle at 20% 20%, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%)',
-            'radial-gradient(circle at 80% 80%, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 100%)',
-            'radial-gradient(circle at 50% 50%, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%)',
-          ],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          repeatType: 'reverse',
-        }}
-      />
+      {/* Dynamic gradient background */}
+      <div className="fixed inset-0 bg-gradient-to-br from-[#1A1F2C] via-[#6E59A5] to-[#9b87f5] z-[-2]" />
+      
+      {/* Animated background elements */}
+      <div className="fixed inset-0 z-[-1] overflow-hidden">
+        {[...Array(20)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-[2px] h-[2px] bg-white rounded-full"
+            initial={{ opacity: 0.1, scale: 0 }}
+            animate={{
+              opacity: [0.1, 0.5, 0.1],
+              scale: [1, 2, 1],
+              x: [Math.random() * window.innerWidth, (Math.random() - 0.5) * 200 + mousePosition.x],
+              y: [Math.random() * window.innerHeight, (Math.random() - 0.5) * 200 + mousePosition.y],
+            }}
+            transition={{
+              duration: Math.random() * 3 + 2,
+              repeat: Infinity,
+              repeatType: "reverse",
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Glassmorphism effect for nav */}
       <motion.nav
-        className="fixed top-0 left-0 right-0 z-50 backdrop-blur-sm bg-black/20"
+        className="fixed top-0 left-0 right-0 z-50 backdrop-blur-lg bg-white/10 border-b border-white/20"
         initial={{ opacity: 1, y: 0 }}
         animate={{ opacity: isHeaderVisible ? 1 : 0, y: isHeaderVisible ? 0 : -100 }}
         transition={{ duration: 0.3 }}
@@ -144,44 +164,20 @@ export default function Portfolio() {
               transition={{ duration: 0.5 }}
               className="mb-8"
             >
-              <h1 className="text-6xl md:text-8xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500">
+              <h1 className="text-6xl md:text-8xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-[#D6BCFA] via-[#9b87f5] to-[#7E69AB]">
                 Your Name
               </h1>
-              <p className="text-2xl md:text-3xl text-gray-300">Software Engineer</p>
+              <p className="text-2xl md:text-3xl text-gray-200">Software Engineer</p>
             </motion.div>
             <motion.a
               href="#contact"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-block px-8 py-4 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+              className="inline-block px-8 py-4 bg-gradient-to-r from-[#9b87f5] to-[#7E69AB] rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
             >
               Get in Touch
             </motion.a>
           </motion.div>
-          
-          <div className="absolute inset-0 z-0">
-            {[...Array(20)].map((_, i) => (
-              <motion.div
-                key={i}
-                className="absolute w-2 h-2 bg-white rounded-full"
-                initial={{
-                  x: Math.random() * window.innerWidth,
-                  y: Math.random() * window.innerHeight,
-                  scale: Math.random() * 0.5 + 0.5,
-                  opacity: Math.random() * 0.5,
-                }}
-                animate={{
-                  y: [null, Math.random() * -100],
-                  opacity: [null, 0],
-                }}
-                transition={{
-                  duration: Math.random() * 2 + 2,
-                  repeat: Infinity,
-                  ease: "linear",
-                }}
-              />
-            ))}
-          </div>
         </section>
 
         <section id="about" className="min-h-screen flex items-center justify-center py-20 relative">
@@ -190,7 +186,7 @@ export default function Portfolio() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="text-5xl md:text-6xl font-bold mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-indigo-500"
+              className="text-5xl md:text-6xl font-bold mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-[#D6BCFA] to-[#9b87f5]"
             >
               About Me
             </motion.h2>
@@ -212,111 +208,7 @@ export default function Portfolio() {
 
         <SkillsSection />
         <ProjectsSection />
-
-        <section id="contact" className="min-h-screen flex items-center justify-center py-20">
-          <div className="container mx-auto px-4">
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="text-5xl md:text-6xl font-bold mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-indigo-500"
-            >
-              Get in Touch
-            </motion.h2>
-            <div className="max-w-3xl mx-auto">
-              <motion.form
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="space-y-6"
-              >
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium mb-2">Name</label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    className="w-full px-4 py-2 rounded-md bg-white bg-opacity-20 focus:bg-opacity-30 focus:outline-none focus:ring-2 focus:ring-white"
-                    required
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium mb-2">Email</label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    className="w-full px-4 py-2 rounded-md bg-white bg-opacity-20 focus:bg-opacity-30 focus:outline-none focus:ring-2 focus:ring-white"
-                    required
-                  />
-                </div>
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium mb-2">Message</label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={4}
-                    className="w-full px-4 py-2 rounded-md bg-white bg-opacity-20 focus:bg-opacity-30 focus:outline-none focus:ring-2 focus:ring-white"
-                    required
-                  ></textarea>
-                </div>
-                <motion.button
-                  type="submit"
-                  whileHover={{ scale: 1.05, boxShadow: '0 0 8px rgba(255,255,255,0.5)' }}
-                  whileTap={{ scale: 0.95 }}
-                  className="w-full bg-purple-600 text-white px-6 py-3 rounded-full font-semibold text-lg transition duration-300 transform hover:-translate-y-1 hover:bg-purple-700"
-                >
-                  Send Message
-                </motion.button>
-              </motion.form>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-                className="mt-12 flex justify-center space-x-6"
-              >
-                <a href="#" className="text-3xl hover:text-gray-300 transition duration-300">
-                  <FaGithub />
-                </a>
-                <a href="#" className="text-3xl hover:text-gray-300 transition duration-300">
-                  <FaLinkedin />
-                </a>
-                <a href="#" className="text-3xl hover:text-gray-300 transition duration-300">
-                  <FaEnvelope />
-                </a>
-              </motion.div>
-            </div>
-          </div>
-        </section>
-
-        <footer className="bg-purple-800 py-12">
-          <div className="container mx-auto px-4">
-            <div className="flex flex-wrap justify-between items-center">
-              <div className="w-full md:w-1/3 text-center md:text-left mb-6 md:mb-0">
-                <h3 className="text-2xl font-bold text-white mb-2">Your Name</h3>
-                <p className="text-purple-200">Software Engineer</p>
-              </div>
-              <div className="w-full md:w-1/3 text-center mb-6 md:mb-0">
-                <div className="flex justify-center space-x-6">
-                  <a href="#" className="text-white hover:text-purple-200 transition duration-300">
-                    <FaGithub className="text-2xl" />
-                  </a>
-                  <a href="#" className="text-white hover:text-purple-200 transition duration-300">
-                    <FaLinkedin className="text-2xl" />
-                  </a>
-                  <a href="#" className="text-white hover:text-purple-200 transition duration-300">
-                    <FaEnvelope className="text-2xl" />
-                  </a>
-                </div>
-              </div>
-              <div className="w-full md:w-1/3 text-center md:text-right">
-                <p className="text-purple-200 text-sm">
-                  © {new Date().getFullYear()} Your Name. All rights reserved.
-                </p>
-              </div>
-            </div>
-          </div>
-        </footer>
+        <ContactSection />
       </main>
     </div>
   )
