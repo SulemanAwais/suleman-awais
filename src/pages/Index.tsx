@@ -3,56 +3,14 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa'
+import SkillsSection from '../components/SkillsSection'
+import ProjectsSection from '../components/ProjectsSection'
 
 const sections = ['Home', 'About', 'Skills', 'Projects', 'Contact']
-
-const skills = [
-  { name: 'Python', level: 9, primaryColor: '#3776AB', secondaryColor: '#FFD43B' },
-  { name: 'Django', level: 8, primaryColor: '#092E20', secondaryColor: '#092E20' },
-  { name: 'DRF', level: 8, primaryColor: '#A30000', secondaryColor: '#A30000' },
-  { name: 'FastAPI', level: 7, primaryColor: '#009688', secondaryColor: '#009688' },
-  { name: 'Flask', level: 6, primaryColor: '#000000', secondaryColor: '#000000' },
-  { name: 'HTML/CSS/JS', level: 5, primaryColor: '#E34F26', secondaryColor: '#1572B6' },
-  { name: 'GitHub', level: 8, primaryColor: '#181717', secondaryColor: '#181717' },
-  { name: 'Deployment', level: 6, primaryColor: '#0080FF', secondaryColor: '#0080FF' },
-  { name: 'MySQL/Postgres', level: 8, primaryColor: '#4479A1', secondaryColor: '#336791' },
-  { name: 'RabbitMQ', level: 7, primaryColor: '#FF6600', secondaryColor: '#FF6600' },
-]
-
-const projects = [
-  {
-    title: 'Risk Assessment Tool',
-    description: 'Developed a quantitative risk assessment tool using Python and FastAPI',
-    highlights: [
-      'Implemented advanced statistical models',
-      'Integrated with external data sources',
-      'Optimized performance for large datasets',
-    ],
-  },
-  {
-    title: 'E-commerce Platform',
-    description: 'Built a scalable e-commerce platform using Django and DRF',
-    highlights: [
-      'Implemented secure payment gateway integration',
-      'Developed a RESTful API for mobile app integration',
-      'Optimized database queries for improved performance',
-    ],
-  },
-  {
-    title: 'Real-time Chat Application',
-    description: 'Created a real-time chat application using Flask and WebSockets',
-    highlights: [
-      'Implemented real-time message delivery',
-      'Developed user authentication and authorization',
-      'Integrated with a NoSQL database for scalability',
-    ],
-  },
-]
 
 export default function Portfolio() {
   const [activeSection, setActiveSection] = useState('Home')
   const [isNavOpen, setIsNavOpen] = useState(false)
-  const [expandedProject, setExpandedProject] = useState(null)
   const [isHeaderVisible, setIsHeaderVisible] = useState(true)
 
   useEffect(() => {
@@ -61,7 +19,6 @@ export default function Portfolio() {
       const windowHeight = window.innerHeight
       const activeSection = sections[Math.floor(scrollPosition / windowHeight)]
       setActiveSection(activeSection)
-
       setIsHeaderVisible(scrollPosition < 100)
     }
 
@@ -253,102 +210,8 @@ export default function Portfolio() {
           </div>
         </section>
 
-        <section id="skills" className="min-h-screen flex items-center justify-center py-20 relative">
-          <div className="container mx-auto px-4">
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="text-5xl md:text-6xl font-bold mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-indigo-500"
-            >
-              Skills
-            </motion.h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {skills.map((skill, index) => (
-                <motion.div
-                  key={skill.name}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="bg-white/10 backdrop-blur-lg rounded-xl p-6 hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl"
-                >
-                  <h3 className="text-xl font-semibold mb-2">{skill.name}</h3>
-                  <div className="w-full bg-white bg-opacity-30 rounded-full h-2">
-                    <motion.div
-                      className="rounded-full h-2"
-                      style={{ backgroundColor: 'white' }}
-                      initial={{ width: 0 }}
-                      whileInView={{ width: `${skill.level * 10}%` }}
-                      transition={{ duration: 1, delay: index * 0.1 }}
-                    ></motion.div>
-                  </div>
-                  <span className="text-sm mt-1 block">{skill.level}/10</span>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section id="projects" className="min-h-screen flex items-center justify-center py-20">
-          <div className="container mx-auto px-4">
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="text-5xl md:text-6xl font-bold mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-indigo-500"
-            >
-              Projects
-            </motion.h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {projects.map((project, index) => (
-                <motion.div
-                  key={project.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="bg-white bg-opacity-10 rounded-lg p-6 hover:bg-opacity-20 transition duration-300"
-                >
-                  <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-                  <p className="text-sm mb-4">{project.description}</p>
-                  <motion.button
-                    onClick={() => setExpandedProject(expandedProject === index ? null : index)}
-                    whileHover={{ scale: 1.05, boxShadow: '0 0 8px rgba(255,255,255,0.5)' }}
-                    whileTap={{ scale: 0.95 }}
-                    className="bg-purple-600 text-white px-4 py-2 rounded-full font-semibold text-sm transition duration-300 transform hover:-translate-y-1 hover:bg-purple-700"
-                  >
-                    {expandedProject === index ? 'Hide Details' : 'View Details'}
-                  </motion.button>
-                  <AnimatePresence>
-                    {expandedProject === index && (
-                      <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="mt-4"
-                      >
-                        <h4 className="font-semibold mb-2">Key Highlights:</h4>
-                        <ul className="list-disc pl-5 space-y-1">
-                          {project.highlights.map((highlight, i) => (
-                            <li key={i}>{highlight}</li>
-                          ))}
-                        </ul>
-                        <motion.a
-                          href="#"
-                          whileHover={{ scale: 1.05, boxShadow: '0 0 8px rgba(255,255,255,0.5)' }}
-                          whileTap={{ scale: 0.95 }}
-                          className="inline-block mt-4 bg-purple-600 text-white px-4 py-2 rounded-full font-semibold text-sm hover:bg-purple-700 transition duration-300 transform hover:-translate-y-1"
-                        >
-                          View Full Project
-                        </motion.a>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
+        <SkillsSection />
+        <ProjectsSection />
 
         <section id="contact" className="min-h-screen flex items-center justify-center py-20">
           <div className="container mx-auto px-4">
