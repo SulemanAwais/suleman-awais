@@ -6,6 +6,8 @@ import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa'
 import SkillsSection from '../components/SkillsSection'
 import ProjectsSection from '../components/ProjectsSection'
 import ContactSection from '../components/ContactSection'
+import HeroSection from '../components/HeroSection'
+import AboutSection from '../components/AboutSection'
 
 const sections = ['Home', 'About', 'Skills', 'Projects', 'Contact']
 
@@ -63,6 +65,7 @@ export default function Portfolio() {
         ))}
       </div>
 
+      {/* Navigation */}
       {/* Glassmorphism effect for nav */}
       <motion.nav
         className="fixed top-0 left-0 right-0 z-50 backdrop-blur-lg bg-white/10 border-b border-white/20"
@@ -151,61 +154,8 @@ export default function Portfolio() {
       </AnimatePresence>
 
       <main>
-        <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center relative z-10"
-          >
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.5 }}
-              className="mb-8"
-            >
-              <h1 className="text-6xl md:text-8xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-[#D6BCFA] via-[#9b87f5] to-[#7E69AB]">
-                Your Name
-              </h1>
-              <p className="text-2xl md:text-3xl text-gray-200">Software Engineer</p>
-            </motion.div>
-            <motion.a
-              href="#contact"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-block px-8 py-4 bg-gradient-to-r from-[#9b87f5] to-[#7E69AB] rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
-            >
-              Get in Touch
-            </motion.a>
-          </motion.div>
-        </section>
-
-        <section id="about" className="min-h-screen flex items-center justify-center py-20 relative">
-          <div className="container mx-auto px-4">
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="text-5xl md:text-6xl font-bold mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-[#D6BCFA] to-[#9b87f5]"
-            >
-              About Me
-            </motion.h2>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="max-w-3xl mx-auto text-center"
-            >
-              <p className="text-lg md:text-xl mb-6">
-                Software Engineer specializing in Python, FastAPI, Flask, and Django, with a focus on developing scalable, high-performance web applications. Experienced in quantitative risk assessment tools and collaborating with cross-functional teams to drive innovation in high-tech systems.
-              </p>
-              <p className="text-lg md:text-xl">
-                Proficient in both back-end and basic front-end technologies, with strong communication skills and a solid foundation in Software Engineering principles. Passionate about contributing to forward-thinking projects.
-              </p>
-            </motion.div>
-          </div>
-        </section>
-
+        <HeroSection name="Suleman Awais" />
+        <AboutSection />
         <SkillsSection />
         <ProjectsSection />
         <ContactSection />

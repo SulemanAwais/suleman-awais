@@ -1,30 +1,29 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { Code2, Database, Github, Globe, MessageSquare, Workflow } from 'lucide-react'
 
 interface Skill {
   name: string;
   level: number;
-  primaryColor: string;
-  secondaryColor: string;
+  icon: React.ReactNode;
   details?: string[];
 }
 
 const skills: Skill[] = [
-  { name: 'Python', level: 9, primaryColor: '#3776AB', secondaryColor: '#FFD43B' },
-  { name: 'Django', level: 8, primaryColor: '#092E20', secondaryColor: '#092E20' },
-  { name: 'DRF', level: 8, primaryColor: '#A30000', secondaryColor: '#A30000' },
-  { name: 'FastAPI', level: 7, primaryColor: '#009688', secondaryColor: '#009688' },
-  { name: 'Flask', level: 6, primaryColor: '#000000', secondaryColor: '#000000' },
-  { name: 'HTML/CSS/JS', level: 5, primaryColor: '#E34F26', secondaryColor: '#1572B6' },
-  { name: 'GitHub', level: 8, primaryColor: '#181717', secondaryColor: '#181717' },
-  { name: 'Deployment', level: 6, primaryColor: '#0080FF', secondaryColor: '#0080FF' },
-  { name: 'MySQL/Postgres', level: 8, primaryColor: '#4479A1', secondaryColor: '#336791' },
-  { name: 'RabbitMQ', level: 7, primaryColor: '#FF6600', secondaryColor: '#FF6600' },
+  { name: 'Python', level: 9, icon: <Code2 className="w-6 h-6" /> },
+  { name: 'Django', level: 8, icon: <Globe className="w-6 h-6" /> },
+  { name: 'DjangoREST Framework', level: 8, icon: <Globe className="w-6 h-6" /> },
+  { name: 'FastAPI', level: 7, icon: <Workflow className="w-6 h-6" /> },
+  { name: 'Flask', level: 6, icon: <Globe className="w-6 h-6" /> },
+  { name: 'HTML/CSS/JS', level: 5, icon: <Code2 className="w-6 h-6" /> },
+  { name: 'GitHub', level: 8, icon: <Github className="w-6 h-6" /> },
+  { name: 'Deployment', level: 6, icon: <Globe className="w-6 h-6" /> },
+  { name: 'MySQL/Postgres', level: 8, icon: <Database className="w-6 h-6" /> },
+  { name: 'RabbitMQ', level: 7, icon: <MessageSquare className="w-6 h-6" /> },
   { 
     name: 'API Integration', 
     level: 9, 
-    primaryColor: '#4A90E2', 
-    secondaryColor: '#4A90E2',
+    icon: <Globe className="w-6 h-6" />,
     details: [
       'Stripe Payment Gateway',
       'Google Maps API',
@@ -60,16 +59,18 @@ export default function SkillsSection() {
               onClick={() => skill.details && setExpandedSkill(expandedSkill === skill.name ? null : skill.name)}
               className={`bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-lg p-6 hover:bg-opacity-20 transition duration-300 ${skill.details ? 'cursor-pointer hover:shadow-lg' : ''}`}
             >
-              <div className="flex justify-between items-center mb-2">
-                <h3 className="text-xl font-semibold">{skill.name}</h3>
+              <div className="flex justify-between items-center mb-4">
+                <div className="flex items-center gap-3">
+                  {skill.icon}
+                  <h3 className="text-xl font-semibold">{skill.name}</h3>
+                </div>
                 {skill.details && (
                   <span className="text-sm text-white/70">Click to view integrations</span>
                 )}
               </div>
-              <div className="w-full bg-white bg-opacity-30 rounded-full h-2">
+              <div className="w-full bg-white/30 rounded-full h-2">
                 <motion.div
-                  className="rounded-full h-2"
-                  style={{ backgroundColor: 'white' }}
+                  className="bg-white rounded-full h-2"
                   initial={{ width: 0 }}
                   whileInView={{ width: `${skill.level * 10}%` }}
                   transition={{ duration: 1, delay: index * 0.1 }}
