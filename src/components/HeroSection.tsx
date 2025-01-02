@@ -31,10 +31,10 @@ export default function HeroSection({ name }: HeroSectionProps) {
               repeat: Infinity,
             }}
             style={{
-              background: "linear-gradient(to right, #000 50%, transparent 50%) 100% 0 / 200% 100% no-repeat",
+              background: "linear-gradient(to right, #9b87f5 50%, #7E69AB 50%) 100% 0 / 200% 100% no-repeat",
               WebkitBackgroundClip: "text",
               backgroundClip: "text",
-              color: "white",
+              color: "transparent",
               WebkitTextFillColor: "transparent"
             }}
           >
