@@ -23,7 +23,7 @@ const skills: Skill[] = [
   { name: 'HTML/CSS/JS', level: 5, icon: <SiJavascript className="w-6 h-6 text-[#F7DF1E] filter drop-shadow-[0_0_3px_rgba(0,0,0,0.8)]" /> },
   { name: 'GitHub', level: 8, icon: <SiGithub className="w-6 h-6 filter drop-shadow-[0_0_3px_rgba(0,0,0,0.8)]" /> },
   { name: 'Deployment', level: 6, icon: <Cloud className="w-6 h-6 filter drop-shadow-[0_0_3px_rgba(0,0,0,0.8)]" /> },
-  { name: 'MySQL/Postgres', level: 8, icon: <SiPostgresql className="w-6 h-6 text-[#336791] filter drop-shadow-[0_0_3px_rgba(0,0,0,0.8)]" /> },
+  { name: 'MySQL/Postgres', level: 8, icon: <SiPostgresql className="w-6 h-6 text-[#336791] filter drop-shadow-[0_0_3px_rgba(255,255,255,0.8)]" /> },
   { name: 'AWS', level: 7, icon: <SiAmazon className="w-6 h-6 text-[#FF9900] filter drop-shadow-[0_0_3px_rgba(0,0,0,0.8)]" /> },
   { 
     name: 'API Integration', 

@@ -13,6 +13,10 @@ export default function ContactSection() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
+    // Create mailto link
+    const mailtoLink = `mailto:SulemanAwais.work@gmail.com?subject=Portfolio Contact from ${formData.name}&body=${formData.message}%0D%0A%0D%0AFrom: ${formData.email}`
+    window.location.href = mailtoLink
+    
     toast({
       title: "Message Sent!",
       description: "Thank you for reaching out. I'll get back to you soon!",
@@ -107,25 +111,29 @@ export default function ContactSection() {
             
             <div className="space-y-4">
               <a 
-                href="#" 
+                href="mailto:SulemanAwais.work@gmail.com" 
                 className="flex items-center space-x-3 text-white/80 hover:text-white transition-colors duration-300"
               >
                 <FaEnvelope className="text-xl" />
-                <span>your.email@example.com</span>
+                <span>SulemanAwais.work@gmail.com</span>
               </a>
               <a 
-                href="#" 
+                href="https://github.com/sulemanAwais" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center space-x-3 text-white/80 hover:text-white transition-colors duration-300"
               >
                 <FaGithub className="text-xl" />
-                <span>github.com/yourusername</span>
+                <span>github.com/sulemanAwais</span>
               </a>
               <a 
-                href="#" 
+                href="http://linkedin.com/in/sulemanawais/" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center space-x-3 text-white/80 hover:text-white transition-colors duration-300"
               >
                 <FaLinkedin className="text-xl" />
-                <span>linkedin.com/in/yourusername</span>
+                <span>linkedin.com/in/sulemanawais</span>
               </a>
             </div>
 
