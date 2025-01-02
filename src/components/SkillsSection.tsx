@@ -15,20 +15,20 @@ interface Skill {
 }
 
 const skills: Skill[] = [
-  { name: 'Python', level: 9, icon: <SiPython className="w-6 h-6 text-[#3776AB] filter drop-shadow-[0_0_1px_rgba(255,255,255,0.8)]" /> },
-  { name: 'Django', level: 8, icon: <SiDjango className="w-6 h-6 text-[#092E20] filter drop-shadow-[0_0_1px_rgba(255,255,255,0.8)]" /> },
-  { name: 'DjangoREST Framework', level: 8, icon: <img src="https://github.com/devicons/devicon/raw/master/icons/djangorest/djangorest-plain.svg" alt="DRF" className="w-6 h-6 filter drop-shadow-[0_0_1px_rgba(255,255,255,0.8)]" /> },
-  { name: 'FastAPI', level: 7, icon: <SiFastapi className="w-6 h-6 text-[#009688] filter drop-shadow-[0_0_1px_rgba(255,255,255,0.8)]" /> },
-  { name: 'Flask', level: 6, icon: <SiFlask className="w-6 h-6 filter drop-shadow-[0_0_1px_rgba(255,255,255,0.8)]" /> },
-  { name: 'HTML/CSS/JS', level: 5, icon: <SiJavascript className="w-6 h-6 text-[#F7DF1E] filter drop-shadow-[0_0_1px_rgba(255,255,255,0.8)]" /> },
-  { name: 'GitHub', level: 8, icon: <SiGithub className="w-6 h-6 filter drop-shadow-[0_0_1px_rgba(255,255,255,0.8)]" /> },
-  { name: 'Deployment', level: 6, icon: <Cloud className="w-6 h-6 filter drop-shadow-[0_0_1px_rgba(255,255,255,0.8)]" /> },
-  { name: 'MySQL/Postgres', level: 8, icon: <SiPostgresql className="w-6 h-6 text-[#336791] filter drop-shadow-[0_0_1px_rgba(255,255,255,0.8)]" /> },
-  { name: 'AWS', level: 7, icon: <SiAmazon className="w-6 h-6 text-[#FF9900] filter drop-shadow-[0_0_1px_rgba(255,255,255,0.8)]" /> },
+  { name: 'Python', level: 9, icon: <SiPython className="w-6 h-6 text-[#3776AB] filter drop-shadow-[0_0_3px_rgba(0,0,0,0.8)]" /> },
+  { name: 'Django', level: 8, icon: <SiDjango className="w-6 h-6 text-[#092E20] filter drop-shadow-[0_0_3px_rgba(0,0,0,0.8)]" /> },
+  { name: 'DjangoREST Framework', level: 8, icon: <img src="https://github.com/devicons/devicon/raw/master/icons/djangorest/djangorest-plain.svg" alt="DRF" className="w-6 h-6 filter drop-shadow-[0_0_3px_rgba(0,0,0,0.8)]" /> },
+  { name: 'FastAPI', level: 7, icon: <SiFastapi className="w-6 h-6 text-[#009688] filter drop-shadow-[0_0_3px_rgba(0,0,0,0.8)]" /> },
+  { name: 'Flask', level: 6, icon: <SiFlask className="w-6 h-6 filter drop-shadow-[0_0_3px_rgba(0,0,0,0.8)]" /> },
+  { name: 'HTML/CSS/JS', level: 5, icon: <SiJavascript className="w-6 h-6 text-[#F7DF1E] filter drop-shadow-[0_0_3px_rgba(0,0,0,0.8)]" /> },
+  { name: 'GitHub', level: 8, icon: <SiGithub className="w-6 h-6 filter drop-shadow-[0_0_3px_rgba(0,0,0,0.8)]" /> },
+  { name: 'Deployment', level: 6, icon: <Cloud className="w-6 h-6 filter drop-shadow-[0_0_3px_rgba(0,0,0,0.8)]" /> },
+  { name: 'MySQL/Postgres', level: 8, icon: <SiPostgresql className="w-6 h-6 text-[#336791] filter drop-shadow-[0_0_3px_rgba(0,0,0,0.8)]" /> },
+  { name: 'AWS', level: 7, icon: <SiAmazon className="w-6 h-6 text-[#FF9900] filter drop-shadow-[0_0_3px_rgba(0,0,0,0.8)]" /> },
   { 
     name: 'API Integration', 
     level: 9, 
-    icon: <TbApi className="w-6 h-6 filter drop-shadow-[0_0_1px_rgba(255,255,255,0.8)]" />,
+    icon: <TbApi className="w-6 h-6 filter drop-shadow-[0_0_3px_rgba(0,0,0,0.8)]" />,
     details: [
       'Stripe Payment Gateway',
       'Google Maps API',
