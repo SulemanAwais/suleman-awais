@@ -2,9 +2,9 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { 
   Code2, Database, Github, Globe, MessageSquare, Workflow,
-  Server, Cloud, Docker, Terminal, FileCode, Tool
+  Server, Cloud, Dock, Terminal, FileCode
 } from 'lucide-react'
-import { SiPython, SiDjango, SiFastapi, SiPostgresql, SiFlask, SiJavascript, SiGithub, SiAmazonaws, SiJira, SiBootstrap } from 'react-icons/si'
+import { SiPython, SiDjango, SiFastapi, SiPostgresql, SiFlask, SiJavascript, SiGithub, SiAmazon, SiJira, SiBootstrap } from 'react-icons/si'
 import { TbApi } from 'react-icons/tb'
 
 interface Skill {
@@ -24,7 +24,7 @@ const skills: Skill[] = [
   { name: 'GitHub', level: 8, icon: <SiGithub className="w-6 h-6" /> },
   { name: 'Deployment', level: 6, icon: <Cloud className="w-6 h-6" /> },
   { name: 'MySQL/Postgres', level: 8, icon: <SiPostgresql className="w-6 h-6 text-[#336791]" /> },
-  { name: 'AWS', level: 7, icon: <SiAmazonaws className="w-6 h-6 text-[#FF9900]" /> },
+  { name: 'AWS', level: 7, icon: <SiAmazon className="w-6 h-6 text-[#FF9900]" /> },
   { 
     name: 'API Integration', 
     level: 9, 
