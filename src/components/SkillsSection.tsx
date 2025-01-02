@@ -1,6 +1,11 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Code2, Database, Github, Globe, MessageSquare, Workflow } from 'lucide-react'
+import { 
+  Code2, Database, Github, Globe, MessageSquare, Workflow,
+  Server, Cloud, Docker, Terminal, FileCode, Tool
+} from 'lucide-react'
+import { SiPython, SiDjango, SiFastapi, SiPostgresql, SiFlask, SiJavascript, SiGithub, SiAmazonaws, SiJira, SiBootstrap } from 'react-icons/si'
+import { TbApi } from 'react-icons/tb'
 
 interface Skill {
   name: string;
@@ -10,20 +15,20 @@ interface Skill {
 }
 
 const skills: Skill[] = [
-  { name: 'Python', level: 9, icon: <Code2 className="w-6 h-6" /> },
-  { name: 'Django', level: 8, icon: <Globe className="w-6 h-6" /> },
-  { name: 'DjangoREST Framework', level: 8, icon: <Globe className="w-6 h-6" /> },
-  { name: 'FastAPI', level: 7, icon: <Workflow className="w-6 h-6" /> },
-  { name: 'Flask', level: 6, icon: <Globe className="w-6 h-6" /> },
-  { name: 'HTML/CSS/JS', level: 5, icon: <Code2 className="w-6 h-6" /> },
-  { name: 'GitHub', level: 8, icon: <Github className="w-6 h-6" /> },
-  { name: 'Deployment', level: 6, icon: <Globe className="w-6 h-6" /> },
-  { name: 'MySQL/Postgres', level: 8, icon: <Database className="w-6 h-6" /> },
-  { name: 'RabbitMQ', level: 7, icon: <MessageSquare className="w-6 h-6" /> },
+  { name: 'Python', level: 9, icon: <SiPython className="w-6 h-6 text-[#3776AB]" /> },
+  { name: 'Django', level: 8, icon: <SiDjango className="w-6 h-6 text-[#092E20]" /> },
+  { name: 'DjangoREST Framework', level: 8, icon: <Globe className="w-6 h-6 text-[#C62828]" /> },
+  { name: 'FastAPI', level: 7, icon: <SiFastapi className="w-6 h-6 text-[#009688]" /> },
+  { name: 'Flask', level: 6, icon: <SiFlask className="w-6 h-6" /> },
+  { name: 'HTML/CSS/JS', level: 5, icon: <SiJavascript className="w-6 h-6 text-[#F7DF1E]" /> },
+  { name: 'GitHub', level: 8, icon: <SiGithub className="w-6 h-6" /> },
+  { name: 'Deployment', level: 6, icon: <Cloud className="w-6 h-6" /> },
+  { name: 'MySQL/Postgres', level: 8, icon: <SiPostgresql className="w-6 h-6 text-[#336791]" /> },
+  { name: 'AWS', level: 7, icon: <SiAmazonaws className="w-6 h-6 text-[#FF9900]" /> },
   { 
     name: 'API Integration', 
     level: 9, 
-    icon: <Globe className="w-6 h-6" />,
+    icon: <TbApi className="w-6 h-6" />,
     details: [
       'Stripe Payment Gateway',
       'Google Maps API',

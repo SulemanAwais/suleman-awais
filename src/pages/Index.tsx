@@ -65,8 +65,6 @@ export default function Portfolio() {
         ))}
       </div>
 
-      {/* Navigation */}
-      {/* Glassmorphism effect for nav */}
       <motion.nav
         className="fixed top-0 left-0 right-0 z-50 backdrop-blur-lg bg-white/10 border-b border-white/20"
         initial={{ opacity: 1, y: 0 }}
@@ -80,7 +78,7 @@ export default function Portfolio() {
             transition={{ duration: 0.5 }}
             className="text-2xl font-bold"
           >
-            Your Name
+            Suleman Awais
           </motion.h1>
           <div className="md:hidden">
             <button

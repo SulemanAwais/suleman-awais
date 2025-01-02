@@ -19,9 +19,27 @@ export default function HeroSection({ name }: HeroSectionProps) {
           transition={{ duration: 0.5 }}
           className="mb-8"
         >
-          <h1 className="text-6xl md:text-8xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-[#D6BCFA] via-[#9b87f5] to-[#7E69AB]">
+          <motion.h1 
+            className="text-6xl md:text-8xl font-bold mb-4 relative inline-block"
+            initial={{ backgroundPosition: "0%" }}
+            animate={{ 
+              backgroundPosition: ["0%", "100%", "0%"],
+            }}
+            transition={{
+              duration: 3,
+              ease: "easeInOut",
+              repeat: Infinity,
+            }}
+            style={{
+              background: "linear-gradient(to right, #000 50%, transparent 50%) 100% 0 / 200% 100% no-repeat",
+              WebkitBackgroundClip: "text",
+              backgroundClip: "text",
+              color: "white",
+              WebkitTextFillColor: "transparent"
+            }}
+          >
             {name}
-          </h1>
+          </motion.h1>
           <p className="text-2xl md:text-3xl text-gray-200">Software Engineer</p>
         </motion.div>
         <motion.a
